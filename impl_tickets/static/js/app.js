@@ -18,14 +18,14 @@
                 success(function(data, status, headers, config) {
                     $scope.items = data;
                 });
-        };
+        }
         getItems();
     }]);
 
     app.controller("AddItemController", ['$scope','$http', function ($scope, $http) {
-        this.item = {};
+        $scope.item = {};
 
-        this.addItem = function () {
+        this.addItem = function() {
             /*for (var key in this.item) {
                 alert(key+':'+this.item[key])
             }*/
@@ -38,8 +38,8 @@
             success(function(data, status, headers, config) {
                 var scope = angular.element($("#body")).scope();
                 scope.items = data;
-                this.item={};
             });
+            this.item={};
         }
     }]);
 

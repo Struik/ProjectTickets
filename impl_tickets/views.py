@@ -1,3 +1,5 @@
+import datetime
+
 from django.shortcuts import render_to_response
 from django.core import serializers
 
@@ -15,7 +17,12 @@ def get_items(request):
 
 def add_item(request):
     params = request.GET
-    p=Items(description=params['description'], status_customer='Новое', status_solvo='Новое')
+    today = datetime.date.today().strftime('%d.%m.%Y')
+    date_to_fix = datetime.datetime.strptime(params['date_to_fix'] or (today), '%d.%m.%Y')
+    p=Items(description=params['description'], submitted_by=params['submitted_by'], responsible=params['responsible'],date_to_fix=date_to_fix,)
+    print(params)
+    print(params['date_to_fix'])
+    print(date_to_fix)
     p.save()
 
     items=serializers.serialize("json", Items.objects.all())
