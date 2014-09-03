@@ -18,6 +18,7 @@ class Items(models.Model):
     date_fix_confirmed = models.DateTimeField('Fix confirmation date', null='true')
     responsible = models.TextField(max_length=2000, null='true')
 
+
     def __str__(self):
         return self.description
 

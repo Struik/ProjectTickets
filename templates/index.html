@@ -19,6 +19,7 @@
         <th>Описание</th>
         <th>Статус Молвест</th>
         <th>Статус Солво</th>
+        <th>Ответственный</th>
         <th>Обнаружено</th>
         <th>Исправлено</th>
         <th>Подтверждено</th>
@@ -30,6 +31,7 @@
         <td>{[{item.fields.description}]}</td>
         <td>{[{item.fields.status_customer}]}</td>
         <td>{[{item.fields.status_solvo}]}</td>
+        <td>{[{item.fields.responsible}]}</td>
         <td>{[{item.fields.date_found | date:'EEEE, MMM d, y HH:mm:ss'}]}</td>
         <td>{[{item.fields.date_fixed | date}]}</td>
         <td>{[{item.fields.date_fix_confirmed | date:'medium'}]}</td>
@@ -37,10 +39,45 @@
     </tbody>
 </table>
 
-<form name="reviewForm" ng-controller="AddItemController as addItemCtrl" ng-submit="addItemCtrl.addItem(itemCtrl.item)"
-      class="form-horizontal">
+<form class="form-horizontal" ng-controller="AddItemController as addItemCtrl" ng-submit="addItemCtrl.addItem(itemCtrl.item)">
+  <fieldset>
+    <legend>Новая запись</legend>
+    <div class="form-group">
+      <label for="inputEmail" class="col-lg-2 control-label">Кем внесено</label>
+      <div class="col-lg-10">
+        <input type="text" class="form-control" id="inputEmail" placeholder="Ваши имя и фамилия">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="textArea" class="col-lg-2 control-label">Описание</label>
+      <div class="col-lg-10">
+        <textarea class="form-control" rows="3" id="textArea" ng-model="addItemCtrl.item.description">Кратко опишите проблему</textarea>
+        <span class="help-block">Если возникает ошибка при определенных действиях, то желательно предоставить пример с указанием времени и точных данных</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="select" class="col-lg-2 control-label">Selects</label>
+      <div class="col-lg-10">
+        <select class="form-control" id="select">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <button class="btn btn-default">Cancel</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+
+<!--form name="reviewForm" ng-controller="AddItemController as addItemCtrl" ng-submit="addItemCtrl.addItem(itemCtrl.item)"
+      class="form-horizontal"-->
     <!--  Live Preview -->
-    <blockquote>
+    <!--blockquote>
         {[{addItemCtrl.item.description}]}
     </blockquote>
 
@@ -53,7 +90,7 @@
             <input type="submit" class="btn btn-primary pull-right" value="Submit"/>
         </div>
     </fieldset>
-</form>
+</form-->
 
 </body>
 </html>
