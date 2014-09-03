@@ -1,0 +1,59 @@
+{% load i18n %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html ng-app="projectTickets">
+<head>
+    <!--meta http-equiv="Content-Type" content="text/html; charset=UTF8"-->
+    <link rel="stylesheet" href="{% static 'css/yeti.bootstrap.css' %}">
+    <script type="text/javascript" src="{% static 'js/jquery-2.1.1.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/angular.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
+</head>
+<body id="body" class="container" ng-controller="ItemController as itemCtrl">
+
+<table class="table table-striped table-hover">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Описание</th>
+        <th>Статус Молвест</th>
+        <th>Статус Солво</th>
+        <th>Обнаружено</th>
+        <th>Исправлено</th>
+        <th>Подтверждено</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="item in items">
+        <td>{[{item.pk}]}</td>
+        <td>{[{item.fields.description}]}</td>
+        <td>{[{item.fields.status_customer}]}</td>
+        <td>{[{item.fields.status_solvo}]}</td>
+        <td>{[{item.fields.date_found | date:'EEEE, MMM d, y HH:mm:ss'}]}</td>
+        <td>{[{item.fields.date_fixed | date}]}</td>
+        <td>{[{item.fields.date_fix_confirmed | date:'medium'}]}</td>
+    </tr>
+    </tbody>
+</table>
+
+<form name="reviewForm" ng-controller="AddItemController as addItemCtrl" ng-submit="addItemCtrl.addItem(itemCtrl.item)"
+      class="form-horizontal">
+    <!--  Live Preview -->
+    <blockquote>
+        {[{addItemCtrl.item.description}]}
+    </blockquote>
+
+    <fieldset>
+        <div class="form-group">
+            <textarea ng-model="addItemCtrl.item.description" class="form-control"
+                      placeholder="Write a short prolem description..." title="Description"></textarea>
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary pull-right" value="Submit"/>
+        </div>
+    </fieldset>
+</form>
+
+</body>
+</html>
