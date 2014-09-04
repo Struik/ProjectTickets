@@ -9,7 +9,8 @@
         $interpolateProvider.endSymbol('}]}');
     });
 
-    app.controller('ItemController', ['$scope','$http', function ($scope, $http) {
+    app.controller('ItemController', ['$scope','$http','$filter', function ($scope, $http, $filter) {
+
         function getItems(){
             $http({
                     url: "get_items",
@@ -17,9 +18,17 @@
                  }).
                 success(function(data, status, headers, config) {
                     $scope.items = data;
+                    $scope.items.selected={};
                 });
         }
         getItems();
+
+
+        this.checkItems = function() {
+            alert(1111);
+            var trues = $filter("filter")( $scope.items , {selected:true} );
+            alert(trues);
+        }
     }]);
 
     app.controller("AddItemController", ['$scope','$http', function ($scope, $http) {
@@ -36,10 +45,10 @@
                 params: this.item
              }).
             success(function(data, status, headers, config) {
-                var scope = angular.element($("#body")).scope();
-                scope.items = data;
+                var table = angular.element($("#body")).scope();
+                $scope.$$prevSibling.items = data;
+                $scope.addItemCtrl.item={};
             });
-            this.item={};
         }
     }]);
 
