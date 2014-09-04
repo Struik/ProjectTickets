@@ -19,15 +19,39 @@
                 success(function(data, status, headers, config) {
                     $scope.items = data;
                     $scope.items.selected={};
+                    $scope.items.fixed={};
                 });
         }
         getItems();
 
 
         this.checkItems = function() {
-            alert(1111);
             var trues = $filter("filter")( $scope.items , {selected:true} );
-            alert(trues);
+            var pks = [];
+
+            for (var iter in trues) {
+                pks.push(trues[iter].pk);
+            }
+
+            $http({
+                url: "delete_item",
+                method: "GET",
+                params: pks
+             }).
+            success(function(data, status, headers, config) {
+                $scope.items = data;
+            });
+        }
+
+        this.fix = function(pk) {
+            $http({
+                url: "fix_item",
+                method: "GET",
+                params: {pk: pk}
+             }).
+            success(function(data, status, headers, config) {
+                $scope.items = data;
+            });
         }
     }]);
 

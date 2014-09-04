@@ -16,6 +16,7 @@ class Items(models.Model):
     status_solvo = models.TextField(max_length=2000)
     date_found = models.DateTimeField('Item registration date', default=timezone.now)
     date_to_fix = models.DateField('Planned fix date', null='true')
+    fixed=models.BooleanField(default='false')
     date_fixed = models.DateTimeField('Fix applied date', null='true')
     date_fix_confirmed = models.DateTimeField('Fix confirmation date', null='true')
     responsible = models.TextField(max_length=2000, null='true')
