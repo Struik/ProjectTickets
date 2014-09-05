@@ -38,7 +38,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="item in items" id="{[{item.pk}]}">
+                <tr ng-repeat="item in items" id="{[{item.pk}]}" class="base" ng-class="{'info' : item.fields.fixed && !item.fields.confirmed, 'success' : item.fields.confirmed}">
                     <td><input type="checkbox" ng-model="item.selected"></td>
                     <td>{[{item.pk}]}</td>
                     <td>{[{item.fields.submitted_by}]}</td>
@@ -57,6 +57,8 @@
             </table>
             <!--button class="btn btn-default">Отмена</button-->
             <button type="submit" class="btn btn-danger" ng-click="ItemCtrl.deleteItems()">Удалить</button>
+            <button class="btn btn-danger" ng-click="myVar='info'">ssss</button>
+
 </div>
 
 <form class="form-horizontal" ng-controller="AddItemController as addItemCtrl">
