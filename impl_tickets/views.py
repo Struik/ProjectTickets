@@ -21,8 +21,10 @@ def get_items(request):
 
 def add_item(request):
     params = request.GET
+    print(params)
     today = datetime.date.today().strftime('%d.%m.%Y')
     date_to_fix = datetime.datetime.strptime(params['date_to_fix'] or (today), '%d.%m.%Y')
+
     p=Items(description=params['description'], submitted_by=params['submitted_by'], responsible=params['responsible'],date_to_fix=date_to_fix,)
     print(params)
     print(params['date_to_fix'])
@@ -30,15 +32,22 @@ def add_item(request):
     p.save()
 
     items=serializers.serialize("json", Items.objects.all())
+    print(items)
     return HttpResponse(items, content_type='application/json')
 
-def fix_item(request):
+def change_item(request):
     params = request.GET
-    pks=[]
-    for param, value in params.items():
-        pks.append(value)
-    print(pks)
-    Items.objects.filter(pk__in=pks).update(date_fixed=timezone.now(), fixed='true')
+    print(params)
+    action = params.getlist('action')[0]
+    value = ((params.getlist('value')[0] == 'true'))
+    if value:
+        date_of_action = timezone.now()
+    else:
+        date_of_action = None
+
+    kw = {action:value,params.getlist('date_field')[0]:date_of_action}
+    Items.objects.filter(pk__in=params.getlist('pks')).update(**kw)
+
 
     items=serializers.serialize("json", Items.objects.all())
     print(items)
@@ -46,11 +55,10 @@ def fix_item(request):
 
 def delete_item(request):
     params = request.GET
-    pks=[]
-    for param, value in params.items():
-        pks.append(value)
-    print(pks)
-    p=Items.objects.filter(pk__in=pks).delete()
+    print(params)
+
+    p=Items.objects.filter(pk__in=params.getlist('pks')).delete()
 
     items=serializers.serialize("json", Items.objects.all())
+    print(items)
     return HttpResponse(items, content_type='application/json')

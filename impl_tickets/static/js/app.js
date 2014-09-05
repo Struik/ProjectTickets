@@ -24,8 +24,30 @@
         }
         getItems();
 
+        this.fix = function(pk,value) {
+            $http({
+                url: "change_item",
+                method: "GET",
+                params: {pks: pk, action: 'fixed', value: value, date_field: 'date_fixed'}
+             }).
+            success(function(data, status, headers, config) {
+                $scope.items = data;
+            });
+        }
 
-        this.checkItems = function() {
+        this.confirm = function(pk,value) {
+            $http({
+                url: "change_item",
+                method: "GET",
+                params: {pks: pk, action: 'confirmed', value: value, date_field: 'date_fix_confirmed'}
+             }).
+            success(function(data, status, headers, config) {
+                $scope.items = data;
+            });
+        }
+
+
+        this.deleteItems = function() {
             var trues = $filter("filter")( $scope.items , {selected:true} );
             var pks = [];
 
@@ -36,18 +58,7 @@
             $http({
                 url: "delete_item",
                 method: "GET",
-                params: pks
-             }).
-            success(function(data, status, headers, config) {
-                $scope.items = data;
-            });
-        }
-
-        this.fix = function(pk) {
-            $http({
-                url: "fix_item",
-                method: "GET",
-                params: {pk: pk}
+                params: {pks: pks}
              }).
             success(function(data, status, headers, config) {
                 $scope.items = data;

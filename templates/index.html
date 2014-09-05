@@ -34,6 +34,7 @@
                     <th>Исправлено</th>
                     <th>Дата исправления</th>
                     <th>Подтверждено</th>
+                    <th>Дата подтверждения</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -47,14 +48,15 @@
                     <td>{[{item.fields.responsible}]}</td>
                     <td>{[{item.fields.date_to_fix | date:'EEEE, MMM d, y'}]}</td>
                     <td>{[{item.fields.date_found | date:'EEEE, MMM d, y HH:mm:ss'}]}</td>
-                    <td><input type="checkbox" ng-model="item.fields.fixed" ng-click="ItemCtrl.fix(item.pk)"></td>
+                    <td><input type="checkbox" ng-model="item.fields.fixed" ng-change="ItemCtrl.fix(item.pk, item.fields.fixed)"></td>
                     <td>{[{item.fields.date_fixed | date:'EEEE, MMM d, y HH:mm:ss'}]}</td>
+                    <td><input type="checkbox" ng-model="item.fields.confirmed" ng-change="ItemCtrl.confirm(item.pk, item.fields.confirmed)"></td>
                     <td>{[{item.fields.date_fix_confirmed | date:'medium'}]}</td>
                 </tr>
                 </tbody>
             </table>
             <!--button class="btn btn-default">Отмена</button-->
-            <button type="submit" class="btn btn-danger" ng-click="ItemCtrl.checkItems()">Удалить</button>
+            <button type="submit" class="btn btn-danger" ng-click="ItemCtrl.deleteItems()">Удалить</button>
 </div>
 
 <form class="form-horizontal" ng-controller="AddItemController as addItemCtrl">
