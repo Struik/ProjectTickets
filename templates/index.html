@@ -11,18 +11,23 @@
     <script type="text/javascript" src="{% static 'js/angular.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/moment.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/bootstrap-datetimepicker.js' %}"></script>
+    <!--script type="text/javascript" src="{% static 'js/bootstrap-datetimepicker.js' %}"></script-->
     <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/jquery.dataTables.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/dataTables.bootstrap.js' %}"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.0.js"></script>
 </head>
 <body id="body" class="container">
 
-<div class="bs-component" ng-controller="ItemController as ItemCtrl">
+
+<div class="container" >
+    <div class="row">
+        <div class="col-lg-12" ng-controller="ItemController as ItemCtrl">
+            <input type="text" class="col-lg-2" placeholder="Поиск" ng-model="searchText">
             <table class="table table-striped table-hover" id="tickets">
                 <thead>
                 <tr>
-                    <th></th>
+                    <th><input type="checkbox" ng-model="selectedAll" ng-change="checkAll()" /></th>
                     <th>#</th>
                     <th>Внесено</th>
                     <th>Описание</th>
@@ -30,15 +35,15 @@
                     <th>Статус Солво</th-->
                     <th>Ответственный</th>
                     <th>Планируется исправление</th>
-                    <th>Обнаружено</th>
-                    <th>Исправлено</th>
-                    <th>Дата исправления</th>
+                    <th>Внесено</th>
+                    <th>Выполнено</th>
+                    <th>Дата выполнения</th>
                     <th>Подтверждено</th>
                     <th>Дата подтверждения</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="item in items" id="{[{item.pk}]}" class="base" ng-class="{'info' : item.fields.fixed && !item.fields.confirmed, 'success' : item.fields.confirmed}">
+                <tr ng-repeat="item in items | filter:searchText" id="{[{item.pk}]}" class="base" ng-class="{'info' : item.fields.fixed && !item.fields.confirmed, 'success' : item.fields.confirmed}">
                     <td><input type="checkbox" ng-model="item.selected"></td>
                     <td>{[{item.pk}]}</td>
                     <td>{[{item.fields.submitted_by}]}</td>
@@ -57,69 +62,81 @@
             </table>
             <!--button class="btn btn-default">Отмена</button-->
             <button type="submit" class="btn btn-danger" ng-click="ItemCtrl.deleteItems()">Удалить</button>
-            <button class="btn btn-danger" ng-click="myVar='info'">ssss</button>
-
+        </div>
+    </div>
 </div>
 
-<form class="form-horizontal" ng-controller="AddItemController as addItemCtrl">
-  <fieldset>
-    <legend>Новая запись</legend>
-    <div class="form-group">
-      <label for="submittedBy" class="col-lg-2 control-label">Кем внесено</label>
-      <div class="col-lg-10">
-        <input type="text" class="form-control" id="submittedBy" ng-model="addItemCtrl.item.submitted_by" placeholder="Ваши имя и фамилия">
-      </div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <form class="form-horizontal" ng-controller="AddItemController as addItemCtrl">
+                <fieldset>
+                    <legend>Новая запись</legend>
+                    <div class="form-group">
+                        <label for="submittedBy" class="col-lg-2 control-label">Кем внесено</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="submittedBy" ng-model="addItemCtrl.item.submitted_by" placeholder="Ваши имя и фамилия" ng-required="true">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="textArea" class="col-lg-2 control-label">Описание</label>
+                        <div class="col-lg-10">
+                            <textarea class="form-control" rows="3" id="textArea" ng-model="addItemCtrl.item.description" placeholder="Кратко опишите проблему" ng-required="true"></textarea>
+                    <span class="help-block">Если возникает ошибка при определенных действиях,
+                        то желательно предоставить пример с указанием времени и точных данных
+                        (имя пользователя, ID груза, номер заказа или работы и т.п.)</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="responsible" class="col-lg-2 control-label">Ответственные</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="responsible" ng-model="addItemCtrl.item.responsible" placeholder="Имена и фамилии лиц, ответственных за решение" ng-required="true">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="dateToFix" class="col-lg-2 control-label">Планируется исправление</label>
+                        <div class="col-lg-3">
+                            <p class="input-group">
+                                <input disabled="true" id="dateToFix" type="text" class="form-control" datepicker-popup="{[{format}]}" ng-model="addItemCtrl.item.date_to_fix" is-open="opened" min-date="'2014-06-22'" max-date="'2020-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" datepicker-localdate/>
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-lg-10 col-lg-offset-2">
+                            <!--button class="btn btn-default">Отмена</button-->
+                            <button type="submit" class="btn btn-primary" ng-click="addItemCtrl.addItem()">Добавить</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
     </div>
-    <div class="form-group">
-      <label for="textArea" class="col-lg-2 control-label">Описание</label>
-      <div class="col-lg-10">
-        <textarea class="form-control" rows="3" id="textArea" ng-model="addItemCtrl.item.description" placeholder="Кратко опишите проблему"></textarea>
-        <span class="help-block">Если возникает ошибка при определенных действиях,
-            то желательно предоставить пример с указанием времени и точных данных
-            (имя пользователя, ID груза, номер заказа или работы и т.п.)</span>
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="responsible" class="col-lg-2 control-label">Ответственные</label>
-      <div class="col-lg-10">
-        <input type="text" class="form-control" id="responsible" ng-model="addItemCtrl.item.responsible" placeholder="Имена и фамилии лиц, ответственных за решение">
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="dateToFix" class="col-lg-2 control-label">Планируется исправление</label>
-      <div class="col-lg-2">
-        <input class="dateinput form-control" id="dateToFix" ng-model="addItemCtrl.item.date_to_fix" placeholder="mm.dd.yyyy" type="text" value="" >
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="col-lg-10 col-lg-offset-2">
-        <!--button class="btn btn-default">Отмена</button-->
-        <button type="submit" class="btn btn-primary" ng-click="addItemCtrl.addItem()">Добавить</button>
-      </div>
-    </div>
-  </fieldset>
-</form>
+</div>
 
 <!--form name="reviewForm" ng-controller="AddItemController as addItemCtrl" ng-submit="addItemCtrl.addItem(itemCtrl.item)"
       class="form-horizontal"-->
-    <!--  Live Preview -->
-    <!--blockquote>
-        {[{addItemCtrl.item.description}]}
-    </blockquote>
+<!--  Live Preview -->
+<!--blockquote>
+    {[{addItemCtrl.item.description}]}
+</blockquote>
 
-    <fieldset>
-        <div class="form-group">
-            <textarea ng-model="addItemCtrl.item.description" class="form-control"
-                      placeholder="Write a short prolem description..." title="Description"></textarea>
-        </div>
-        <div class="form-group">
-            <input type="submit" class="btn btn-primary pull-right" value="Submit"/>
-        </div>
-    </fieldset>
+<fieldset>
+    <div class="form-group">
+        <textarea ng-model="addItemCtrl.item.description" class="form-control"
+                  placeholder="Write a short prolem description..." title="Description"></textarea>
+    </div>
+    <div class="form-group">
+        <input type="submit" class="btn btn-primary pull-right" value="Submit"/>
+    </div>
+</fieldset>
 </form-->
 <script type="text/javascript">
     $(document).ready(function() {
-        $('.dateinput').datetimepicker({ pickTime: false, format: 'DD.MM.YYYY'});
+        //$('.dateinput').datetimepicker({ pickTime: false, format: 'DD.MM.YYYY'});
         //$('#tickets').dataTable();
     } );
 </script>

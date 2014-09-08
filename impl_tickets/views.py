@@ -23,7 +23,8 @@ def add_item(request):
     params = request.GET
     print(params)
     today = datetime.date.today().strftime('%d.%m.%Y')
-    date_to_fix = datetime.datetime.strptime(params['date_to_fix'] or (today), '%d.%m.%Y')
+    date_to_fix = datetime.datetime.strptime(params['date_to_fix'] or (today), '%Y-%m-%d')
+    # date_to_fix = datetime.datetime.strptime(params['date_to_fix'] or (today), '%Y-%m-%dT%H:%M:%S.%fZ')
 
     p=Items(description=params['description'], submitted_by=params['submitted_by'], responsible=params['responsible'],date_to_fix=date_to_fix,)
     print(params)
@@ -32,7 +33,7 @@ def add_item(request):
     p.save()
 
     items=serializers.serialize("json", Items.objects.all())
-    print(items)
+    # print(items)
     return HttpResponse(items, content_type='application/json')
 
 def change_item(request):

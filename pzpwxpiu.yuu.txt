@@ -1,0 +1,64 @@
+﻿First commit
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+#
+# Initial commit
+#
+# Changes to be committed:
+#	new file:   .idea/.name
+#	new file:   .idea/encodings.xml
+#	new file:   .idea/misc.xml
+#	new file:   .idea/modules.xml
+#	new file:   .idea/scopes/scope_settings.xml
+#	new file:   .idea/tickets.iml
+#	new file:   .idea/vcs.xml
+#	new file:   .idea/workspace.xml
+#	new file:   ProjectTickets
+#	new file:   README.md
+#	new file:   db.sqlite3
+#	new file:   impl_tickets/__init__.py
+#	new file:   impl_tickets/__pycache__/__init__.cpython-33.pyc
+#	new file:   impl_tickets/__pycache__/admin.cpython-33.pyc
+#	new file:   impl_tickets/__pycache__/models.cpython-33.pyc
+#	new file:   impl_tickets/__pycache__/views.cpython-33.pyc
+#	new file:   impl_tickets/admin.py
+#	new file:   impl_tickets/migrations/0001_initial.py
+#	new file:   impl_tickets/migrations/0002_auto__add_field_items_responsible.py
+#	new file:   impl_tickets/migrations/0003_auto__chg_field_items_date_fixed__chg_field_items_responsible__chg_fie.py
+#	new file:   impl_tickets/migrations/__init__.py
+#	new file:   impl_tickets/migrations/__pycache__/0001_initial.cpython-33.pyc
+#	new file:   impl_tickets/migrations/__pycache__/0001_wow.cpython-33.pyc
+#	new file:   impl_tickets/migrations/__pycache__/0002_auto__add_field_items_responsible.cpython-33.pyc
+#	new file:   impl_tickets/migrations/__pycache__/0002_auto__del_items.cpython-33.pyc
+#	new file:   impl_tickets/migrations/__pycache__/0002_initial.cpython-33.pyc
+#	new file:   impl_tickets/migrations/__pycache__/0003_auto__add_items__add_itemstatus.cpython-33.pyc
+#	new file:   impl_tickets/migrations/__pycache__/0003_auto__chg_field_items_date_fixed__chg_field_items_responsible__chg_fie.cpython-33.pyc
+#	new file:   impl_tickets/migrations/__pycache__/0003_auto__del_itemstatus.cpython-33.pyc
+#	new file:   impl_tickets/migrations/__pycache__/0003_initial.cpython-33.pyc
+#	new file:   impl_tickets/migrations/__pycache__/0004_initial.cpython-33.pyc
+#	new file:   impl_tickets/migrations/__pycache__/__init__.cpython-33.pyc
+#	new file:   impl_tickets/models.py
+#	new file:   impl_tickets/static/css/bootstrap.min.css
+#	new file:   impl_tickets/static/css/yeti.bootstrap.css
+#	new file:   impl_tickets/static/js/angular.js
+#	new file:   impl_tickets/static/js/app.js
+#	new file:   impl_tickets/static/js/bootstrap.min.js
+#	new file:   impl_tickets/static/js/jquery-2.1.1.js
+#	new file:   impl_tickets/static/yeti.bootstrap.css
+#	new file:   impl_tickets/tests.py
+#	new file:   impl_tickets/views.py
+#	new file:   manage.py
+#	new file:   templates/index.html
+#	new file:   tickets/__init__.py
+#	new file:   tickets/__init__.pyc
+#	new file:   tickets/__pycache__/__init__.cpython-33.pyc
+#	new file:   tickets/__pycache__/settings.cpython-33.pyc
+#	new file:   tickets/__pycache__/urls.cpython-33.pyc
+#	new file:   tickets/__pycache__/wsgi.cpython-33.pyc
+#	new file:   tickets/settings.py
+#	new file:   tickets/settings.pyc
+#	new file:   tickets/urls.py
+#	new file:   tickets/wsgi.py
+#
+
