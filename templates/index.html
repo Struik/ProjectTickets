@@ -56,7 +56,7 @@
                     <td><input type="checkbox" ng-model="item.fields.fixed" ng-change="ItemCtrl.fix(item.pk, item.fields.fixed)"></td>
                     <td>{[{item.fields.date_fixed | date:'EEEE, MMM d, y HH:mm:ss'}]}</td>
                     <td><input type="checkbox" ng-model="item.fields.confirmed" ng-change="ItemCtrl.confirm(item.pk, item.fields.confirmed)"></td>
-                    <td>{[{item.fields.date_fix_confirmed | date:'medium'}]}</td>
+                    <td>{[{item.fields.date_fix_confirmed | date:'EEEE, MMM d, y HH:mm:ss'}]}</td>
                 </tr>
                 </tbody>
             </table>

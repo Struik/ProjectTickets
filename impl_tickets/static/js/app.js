@@ -5,7 +5,7 @@
     var app = angular.module('projectTickets', ['ui.bootstrap']);
 
     app.config(function($interpolateProvider) {
-        $interpolateProvider.startSymbol('{[{');
+        $interpolateProvider.startSymbol('{[{');//замена стандартных символов '{{' и '}}' для совместимости с django
         $interpolateProvider.endSymbol('}]}');
     });
 
@@ -22,8 +22,10 @@
                 $scope.items.fixed={};
             });
         }
+        //Загрузка данных при попадании на страницу
         getItems();
 
+        //Галочка в шапке таблицы, которая включает на гриде все галочки, ответственные за удаление
         $scope.checkAll = function () {
             if ($scope.selectedAll) {
                 $scope.selectedAll = true;
@@ -35,6 +37,8 @@
             });
         }
 
+        //Изменение галочки "Выполнено". При установке проставляется дата выполнения равная времени нажатия,
+        //при снятии дата выполнения очищается
         this.fix = function(pk,value) {
             $http({
                 url: "change_item",
@@ -46,6 +50,8 @@
             });
         }
 
+        //Изменение галочки "Выполнено". При установке проставляется дата выполнения равная времени нажатия,
+        //при снятии дата выполнения очищается
         this.confirm = function(pk,value) {
             $http({
                 url: "change_item",
@@ -57,7 +63,7 @@
             });
         }
 
-
+        //Удаление тикетов. Удаляются все тикеты, у которых проставлено selected=true, т.е. установлен галочка перед номером тикета
         this.deleteItems = function() {
             var trues = $filter("filter")( $scope.items , {selected:true} );
             var pks = [];
@@ -65,21 +71,22 @@
             for (var iter in trues) {
                 pks.push(trues[iter].pk);
             }
-
-            $http({
+            alert('Удаление временно отключено')
+            /*$http({
                 url: "delete_item",
                 method: "GET",
                 params: {pks: pks}
              }).
             success(function(data, status, headers, config) {
                 $scope.items = data;
-            });
+            });*/
         }
     }]);
 
     app.controller("AddItemController", ['$scope','$http', function ($scope, $http) {
         $scope.item = {};
 
+        //Инициализация элемента datepicker в форме добавления тикета. Код пока не разбирал, только немного адаптировал
         $scope.dateOptions = {
             formatYear: 'yy',
             startingDay: 1
@@ -98,6 +105,7 @@
             $scope.opened = true;
         };
 
+        //Команда на добавление нового тикета
         this.addItem = function() {
             /*for (var key in this.item) {
                 alert(key+':'+this.item[key])
@@ -136,6 +144,7 @@
         }
     ];
 
+    //Фикс для правильной работы с датой, до его включения, при создании нового тикета в backend уходила вчерашняя дата.
     app.directive('datepickerLocaldate', ['$parse', function ($parse) {
         var directive = {
             restrict: 'A',
