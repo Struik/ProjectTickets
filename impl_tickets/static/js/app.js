@@ -71,15 +71,15 @@
             for (var iter in trues) {
                 pks.push(trues[iter].pk);
             }
-            alert('Удаление временно отключено')
-            /*$http({
+            //alert('Удаление временно отключено')
+            $http({
                 url: "delete_item",
                 method: "GET",
                 params: {pks: pks}
              }).
             success(function(data, status, headers, config) {
                 $scope.items = data;
-            });*/
+            });
         }
     }]);
 
