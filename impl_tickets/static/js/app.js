@@ -71,15 +71,15 @@
             for (var iter in trues) {
                 pks.push(trues[iter].pk);
             }
-            //alert('Удаление временно отключено')
-            $http({
+            alert('Удаление временно отключено')
+            /*$http({
                 url: "delete_item",
                 method: "GET",
                 params: {pks: pks}
              }).
             success(function(data, status, headers, config) {
                 $scope.items = data;
-            });
+            });*/
         }
     }]);
 
@@ -93,6 +93,7 @@
         };
 
         $scope.format = 'dd-MMMM-yyyy';
+        $scope.minDate = new Date();
 
         $scope.disabled = function(date, mode) {
             return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
