@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5e32c9b5-98ab-4b11-8e46-ca258b994986" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/impl_tickets/static/js/angular-locale_ru-ru.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/impl_tickets/static/js/angular-locale_ru.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/impl_tickets/static/js/app.js" afterPath="$PROJECT_DIR$/impl_tickets/static/js/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/index.html" afterPath="$PROJECT_DIR$/templates/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -31,7 +32,7 @@
       <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="99" column="209" selection-start="6152" selection-end="6152" vertical-scroll-proportion="0.30088496" vertical-offset="1581" max-vertical-offset="2550">
+            <state line="11" column="4" selection-start="622" selection-end="622" vertical-scroll-proportion="0.51232874" vertical-offset="0" max-vertical-offset="2567">
               <folding />
             </state>
           </provider>
@@ -58,7 +59,7 @@
       <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/impl_tickets/static/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="94" column="39" selection-start="3427" selection-end="3427" vertical-scroll-proportion="0.0" vertical-offset="1428" max-vertical-offset="3196">
+            <state line="96" column="0" selection-start="3465" selection-end="3465" vertical-scroll-proportion="0.0" vertical-offset="1428" max-vertical-offset="3196">
               <folding>
                 <marker date="1411659350042" expanded="true" signature="2791:3032" placeholder="..." />
               </folding>
@@ -78,7 +79,7 @@
       <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/impl_tickets/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="88" selection-start="775" selection-end="775" vertical-scroll-proportion="0.0" vertical-offset="69" max-vertical-offset="1020">
+            <state line="25" column="88" selection-start="775" selection-end="775" vertical-scroll-proportion="0.0" vertical-offset="425" max-vertical-offset="1190">
               <folding />
             </state>
           </provider>
@@ -551,7 +552,11 @@
       <created>1411643043020</created>
       <updated>1411643043020</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Fixed datepicker control so it's possible to choose weekends">
+      <created>1411659413385</created>
+      <updated>1411659413385</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -582,7 +587,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3260188" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2489019" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2489019" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3291536" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -590,12 +595,12 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="UnknownFeatures">
@@ -622,7 +627,8 @@
     <MESSAGE value="AngularUI with datetimepicker + datetime-localdate fix" />
     <MESSAGE value="+ comments" />
     <MESSAGE value="Version for office implementation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Version for office implementation" />
+    <MESSAGE value="Fixed datepicker control so it's possible to choose weekends" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed datepicker control so it's possible to choose weekends" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -937,7 +943,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/impl_tickets/static/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="39" selection-start="3427" selection-end="3427" vertical-scroll-proportion="0.0" vertical-offset="1428" max-vertical-offset="3196">
+        <state line="96" column="0" selection-start="3465" selection-end="3465" vertical-scroll-proportion="0.0" vertical-offset="1428" max-vertical-offset="3196">
           <folding>
             <marker date="1411659350042" expanded="true" signature="2791:3032" placeholder="..." />
           </folding>
@@ -946,7 +952,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="99" column="209" selection-start="6152" selection-end="6152" vertical-scroll-proportion="0.30088496" vertical-offset="1581" max-vertical-offset="2550">
+        <state line="11" column="4" selection-start="622" selection-end="622" vertical-scroll-proportion="0.51232874" vertical-offset="0" max-vertical-offset="2567">
           <folding />
         </state>
       </provider>
