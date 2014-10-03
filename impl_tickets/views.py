@@ -16,7 +16,6 @@ def index(request):
 
 def get_items(request):
     items=serializers.serialize("json", Items.objects.all())
-    print(items)
     return HttpResponse(items, content_type='application/json')
 
 def add_item(request):

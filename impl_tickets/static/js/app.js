@@ -17,7 +17,12 @@
                     method: "GET"
                  }).
             success(function(data, status, headers, config) {
-                $scope.items = data;
+                var dataAdjusted = [];
+                for (var iter in data) {
+                    dataAdjusted[iter]=data[iter]['fields'];
+                    dataAdjusted[iter]['pk']=data[iter]['pk']
+                }
+                $scope.items = dataAdjusted;
                 $scope.items.selected={};
                 $scope.items.fixed={};
             });

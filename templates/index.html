@@ -3,7 +3,12 @@
 <!DOCTYPE html>
 <html ng-app="projectTickets">
 <head>
-    <!--meta http-equiv="Content-Type" content="text/html; charset=UTF8"-->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
     <link rel="stylesheet" type="text/css" href="{% static 'css/yeti.bootstrap.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-datetimepicker.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/dataTables.bootstrap.css' %}"/>
@@ -18,58 +23,85 @@
     <script type="text/javascript" src="{% static 'js/dataTables.bootstrap.js' %}"></script>
     <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.0.js"></script>
 </head>
-<body id="body" class="container">
+<body id="body">
 
 
-<div class="container" >
-    <div class="row">
-        <div class="col-lg-12" ng-controller="ItemController as ItemCtrl">
-            <input type="text" class="col-lg-2" placeholder="Поиск" ng-model="searchText">
-            <table class="table table-striped table-hover" id="tickets">
-                <thead>
-                <tr>
-                    <th><input type="checkbox" ng-model="selectedAll" ng-change="checkAll()" /></th>
-                    <th>#</th>
-                    <th>Внесено</th>
-                    <th>Описание</th>
-                    <!--th>Статус Молвест</th>
-                    <th>Статус Солво</th-->
-                    <th>Ответственный</th>
-                    <th>Планируется исправление</th>
-                    <th>Внесено</th>
-                    <th>Выполнено</th>
-                    <th>Дата выполнения</th>
-                    <th>Подтверждено</th>
-                    <th>Дата подтверждения</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr ng-repeat="item in items | filter:searchText" id="{[{item.pk}]}" class="base" ng-class="{'info' : item.fields.fixed && !item.fields.confirmed, 'success' : item.fields.confirmed}">
-                    <td><input type="checkbox" ng-model="item.selected"></td>
-                    <td>{[{item.pk}]}</td>
-                    <td>{[{item.fields.submitted_by}]}</td>
-                    <td>{[{item.fields.description}]}</td>
-                    <!--td>{[{item.fields.status_customer}]}</td>
-                    <td>{[{item.fields.status_solvo}]}</td-->
-                    <td>{[{item.fields.responsible}]}</td>
-                    <td>{[{item.fields.date_to_fix | date:'EEEE, MMM d, y'}]}</td>
-                    <td>{[{item.fields.date_found | date:'EEEE, MMM d, y HH:mm:ss'}]}</td>
-                    <td><input type="checkbox" ng-model="item.fields.fixed" ng-change="ItemCtrl.fix(item.pk, item.fields.fixed)"></td>
-                    <td>{[{item.fields.date_fixed | date:'EEEE, MMM d, y HH:mm:ss'}]}</td>
-                    <td><input type="checkbox" ng-model="item.fields.confirmed" ng-change="ItemCtrl.confirm(item.pk, item.fields.confirmed)"></td>
-                    <td>{[{item.fields.date_fix_confirmed | date:'EEEE, MMM d, y HH:mm:ss'}]}</td>
-                </tr>
-                </tbody>
-            </table>
-            <!--button class="btn btn-default">Отмена</button-->
-            <button type="submit" class="btn btn-danger" ng-click="ItemCtrl.deleteItems()">Удалить</button>
+<div class="container">
+    <div class="row" ng-controller="ItemController as ItemCtrl">
+        <input type="text" placeholder="Поиск" ng-model="searchText.$">
+        <input type="text" placeholder="Внесено" ng-model="searchText.submitted_by">
+        <input type="text" placeholder="Описание" ng-model="searchText.description">
+        <input type="text" placeholder="Ответственный" ng-model="searchText.responsible">
+        <select ng-model="searchText.fixed">
+            <option value="">Все</option>
+            <option value="true">Проверено</option>
+            <option value="false">Не проверено</option>
+        </select>
+        <select ng-model="searchText.confirmed">
+            <option value="">Все</option>
+            <option value="true">Подтверждено</option>
+            <option value="false">Не подтверждено</option>
+        </select>
+
+        <select ng-model="orderList">
+            <option value="pk">#</option>
+            <option value="fields.submitted_by">Внесено</option>
+            <option value="fields.description">Описание</option>
+            <option value="fields.responsible">Ответственный</option>
+            <option value="fields.date_to_fix">Планируется исправление</option>
+            <option value="fields.date_found">Внесено</option>
+            <option value="fields.date_fixed">Выполнено</option>
+            <option value="fields.fixed">Дата выполнения</option>
+            <option value="fields.confirmed">Подтверждено</option>
+            <option value="fields.date_fix_confirmed">Дата подтверждения</option>
+        </select>
+
+        <div class="table-responsive">
+        <table class="table table-striped table-hover" id="tickets">
+            <thead>
+            <tr>
+                <th><input type="checkbox" ng-model="selectedAll" ng-change="checkAll()" /></th>
+                <th>#</th>
+                <th>Внесено</th>
+                <th>Описание</th>
+                <!--th>Статус Молвест</th>
+                <th>Статус Солво</th-->
+                <th>Ответственный</th>
+                <th>Планируется исправление</th>
+                <th>Внесено</th>
+                <th>Выполнено</th>
+                <th>Дата выполнения</th>
+                <th>Подтверждено</th>
+                <th>Дата подтверждения</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in items | filter:(searchText||undefined)" id="{[{item.pk}]}" class="base" ng-class="{'info' : item.fixed && !item.confirmed, 'success' : item.confirmed}">
+                <td><input type="checkbox" ng-model="item.selected"></td>
+                <td>{[{item.pk}]}</td>
+                <td>{[{item.submitted_by}]}</td>
+                <td>{[{item.description}]}</td>
+                <!--td>{[{item.status_customer}]}</td>
+                <td>{[{item.status_solvo}]}</td-->
+                <td>{[{item.responsible}]}</td>
+                <td>{[{item.date_to_fix | date:'EEEE, MMM d, y'}]}</td>
+                <td>{[{item.date_found | date:'EEEE, MMM d, y HH:mm:ss'}]}</td>
+                <td><input type="checkbox" ng-model="item.fixed" ng-change="ItemCtrl.fix(item.pk, item.fixed)"></td>
+                <td>{[{item.date_fixed | date:'EEEE, MMM d, y HH:mm:ss'}]}</td>
+                <td><input type="checkbox" ng-model="item.confirmed" ng-change="ItemCtrl.confirm(item.pk, item.confirmed)"></td>
+                <td>{[{item.date_fix_confirmed | date:'EEEE, MMM d, y HH:mm:ss'}]}</td>
+            </tr>
+            </tbody>
+        </table>
         </div>
+        <!--button class="btn btn-default">Отмена</button-->
+        <button type="submit" class="btn btn-danger" ng-click="ItemCtrl.deleteItems()">Удалить</button>
     </div>
 </div>
 
 <div class="container">
     <div class="row">
-        <div class="col-lg-12">
+        <div>
             <form class="form-horizontal" ng-controller="AddItemController as addItemCtrl">
                 <fieldset>
                     <legend>Новая запись</legend>
@@ -137,8 +169,10 @@
 </form-->
 <script type="text/javascript">
     $(document).ready(function() {
-        //$('.dateinput').datetimepicker({ pickTime: false, format: 'DD.MM.YYYY'});
-        //$('#tickets').dataTable();
+        //$('#filters > input').each(function(){
+        //    $(this).width($(this).parent().width());
+        //});
+        ///$("#aaa").css( "width", $("#aaa").parent().width() );
     } );
 </script>
 
