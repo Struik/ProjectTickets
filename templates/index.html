@@ -29,9 +29,9 @@
 <div class="container">
     <div class="row" ng-controller="ItemController as ItemCtrl">
         <input type="text" placeholder="Поиск" ng-model="searchText.$">
-        <input type="text" placeholder="Внесено" ng-model="searchText.submitted_by">
-        <input type="text" placeholder="Описание" ng-model="searchText.description">
-        <input type="text" placeholder="Ответственный" ng-model="searchText.responsible">
+        <input type="text" placeholder="Внесено" ng-model="searchText.fields.submitted_by">
+        <input type="text" placeholder="Описание" ng-model="searchText.fields.description">
+        <input type="text" placeholder="Ответственный" ng-model="searchText.fields.responsible">
         <select ng-model="searchText.fixed">
             <option value="">Все</option>
             <option value="true">Проверено</option>
@@ -64,8 +64,6 @@
                 <th>#</th>
                 <th>Внесено</th>
                 <th>Описание</th>
-                <!--th>Статус Молвест</th>
-                <th>Статус Солво</th-->
                 <th>Ответственный</th>
                 <th>Планируется исправление</th>
                 <th>Внесено</th>
@@ -76,20 +74,18 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="item in items | filter:(searchText||undefined)" id="{[{item.pk}]}" class="base" ng-class="{'info' : item.fixed && !item.confirmed, 'success' : item.confirmed}">
+            <tr ng-repeat="item in items | filter:searchText:comparator" id="{[{item.pk}]}" class="base" ng-class="{'info' : item.fields.fixed && !item.fields.confirmed, 'success' : item.fields.confirmed}">
                 <td><input type="checkbox" ng-model="item.selected"></td>
                 <td>{[{item.pk}]}</td>
-                <td>{[{item.submitted_by}]}</td>
-                <td>{[{item.description}]}</td>
-                <!--td>{[{item.status_customer}]}</td>
-                <td>{[{item.status_solvo}]}</td-->
-                <td>{[{item.responsible}]}</td>
-                <td>{[{item.date_to_fix | date:'EEEE, MMM d, y'}]}</td>
-                <td>{[{item.date_found | date:'EEEE, MMM d, y HH:mm:ss'}]}</td>
-                <td><input type="checkbox" ng-model="item.fixed" ng-change="ItemCtrl.fix(item.pk, item.fixed)"></td>
-                <td>{[{item.date_fixed | date:'EEEE, MMM d, y HH:mm:ss'}]}</td>
-                <td><input type="checkbox" ng-model="item.confirmed" ng-change="ItemCtrl.confirm(item.pk, item.confirmed)"></td>
-                <td>{[{item.date_fix_confirmed | date:'EEEE, MMM d, y HH:mm:ss'}]}</td>
+                <td>{[{item.fields.submitted_by}]}</td>
+                <td>{[{item.fields.description}]}</td>
+                <td>{[{item.fields.responsible}]}</td>
+                <td>{[{item.fields.date_to_fix | date:'EEEE, MMM d, y'}]}</td>w
+                <td>{[{item.fields.date_found | date:'EEEE, MMM d, y HH:mm:ss'}]}</td>
+                <td><input type="checkbox" ng-model="item.fields.fixed" ng-change="ItemCtrl.fix(item.pk, item.fields.fixed)"></td>
+                <td>{[{item.fields.date_fixed | date:'EEEE, MMM d, y HH:mm:ss'}]}</td>
+                <td><input type="checkbox" ng-model="item.fields.confirmed" ng-change="ItemCtrl.confirm(item.pk, item.fields.confirmed)"></td>
+                <td>{[{item.fields.date_fix_confirmed | date:'EEEE, MMM d, y HH:mm:ss'}]}</td>
             </tr>
             </tbody>
         </table>

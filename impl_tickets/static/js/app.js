@@ -17,12 +17,13 @@
                     method: "GET"
                  }).
             success(function(data, status, headers, config) {
-                var dataAdjusted = [];
+                /*var dataAdjusted = [];
                 for (var iter in data) {
                     dataAdjusted[iter]=data[iter]['fields'];
                     dataAdjusted[iter]['pk']=data[iter]['pk']
                 }
-                $scope.items = dataAdjusted;
+                $scope.items = dataAdjusted;*/
+                $scope.items = data;
                 $scope.items.selected={};
                 $scope.items.fixed={};
             });
@@ -76,16 +77,30 @@
             for (var iter in trues) {
                 pks.push(trues[iter].pk);
             }
-            alert('Удаление временно отключено')
-            /*$http({
+            $http({
                 url: "delete_item",
                 method: "GET",
                 params: {pks: pks}
              }).
             success(function(data, status, headers, config) {
                 $scope.items = data;
-            });*/
+            });
         }
+
+        var comparator = function(actual, expected) {
+        if (actual && expected && typeof actual === 'object' && typeof expected === 'object') {
+            var res = true;
+            for (var key in expected) {
+                if (key.charAt(0) !== '$' && hasOwnProperty.call(actual, key)) {
+                    res = res && comparator(actual[key], expected[key]);
+                }
+            }
+            return res;
+            }
+            expected = (''+expected).toLowerCase();
+            return (''+actual).toLowerCase().indexOf(expected) > -1;
+        };
+        $scope.comparator = comparator;
     }]);
 
     app.controller("AddItemController", ['$scope','$http', function ($scope, $http) {
