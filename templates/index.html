@@ -32,12 +32,12 @@
         <input type="text" placeholder="Внесено" ng-model="searchText.fields.submitted_by">
         <input type="text" placeholder="Описание" ng-model="searchText.fields.description">
         <input type="text" placeholder="Ответственный" ng-model="searchText.fields.responsible">
-        <select ng-model="searchText.fixed">
+        <select ng-model="searchText.fields.fixed">
             <option value="">Все</option>
             <option value="true">Проверено</option>
             <option value="false">Не проверено</option>
         </select>
-        <select ng-model="searchText.confirmed">
+        <select ng-model="searchText.fields.confirmed">
             <option value="">Все</option>
             <option value="true">Подтверждено</option>
             <option value="false">Не подтверждено</option>
