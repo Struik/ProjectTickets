@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5e32c9b5-98ab-4b11-8e46-ca258b994986" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/index.html" afterPath="$PROJECT_DIR$/templates/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="tickets.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,7 +38,7 @@
       <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="44" selection-start="2003" selection-end="2003" vertical-scroll-proportion="0.24971752" vertical-offset="357" max-vertical-offset="3077">
+            <state line="82" column="78" selection-start="4370" selection-end="4370" vertical-scroll-proportion="0.3329453" vertical-offset="1108" max-vertical-offset="3077">
               <folding />
             </state>
           </provider>
@@ -564,7 +564,11 @@
       <created>1412683186713</created>
       <updated>1412683186713</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Little fix for filters">
+      <created>1412684116157</created>
+      <updated>1412684116157</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -639,7 +643,8 @@
     <MESSAGE value="Russian localization" />
     <MESSAGE value="Even more filters" />
     <MESSAGE value="Changed filter handling according to http://stackoverflow.com/questions/26176496/angularjs-basic-filtering-works-as-union-instead-of-intersection" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed filter handling according to http://stackoverflow.com/questions/26176496/angularjs-basic-filtering-works-as-union-instead-of-intersection" />
+    <MESSAGE value="Little fix for filters" />
+    <option name="LAST_COMMIT_MESSAGE" value="Little fix for filters" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -953,7 +958,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="44" selection-start="2003" selection-end="2003" vertical-scroll-proportion="0.24971752" vertical-offset="357" max-vertical-offset="3077">
+        <state line="82" column="78" selection-start="4370" selection-end="4370" vertical-scroll-proportion="0.3329453" vertical-offset="1108" max-vertical-offset="3077">
           <folding />
         </state>
       </provider>
